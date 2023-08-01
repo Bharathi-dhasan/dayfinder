@@ -1,0 +1,142 @@
+import java.util.*;
+public class Main
+{
+    public static int lazyfunction(int j,int date,int h){
+        while(date!=j){
+            j--;
+            h--;
+            if(h==-1) h=6;
+        }
+        return h;
+    }
+    public static int worry(int j,int date){
+         while(j<date){
+                    j+=7;
+                }
+                return j;
+    }
+    
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter a date");
+		int date=s.nextInt();
+		System.out.println("enter a month");
+		int month=s.nextInt();
+		System.out.println("enter a year");
+		int year=s.nextInt();
+		int g=28;
+		String ar[]={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+		if((year%4==0) || (year%100!=0 &&  year%400==0)){
+		    g=29;
+		}
+		boolean fla=true;
+		if((month==1 ||month==3||month==5||month==7||month==8||month==12||month==10)&& date>31 || date<=0)
+		{System.out.println("please enter valid date");fla=false;}
+		 else if((month==4||month==6||month==9||month==11)&& date>30|| date<=0)
+		{System.out.println("please enter valid date");fla=false;}
+		else if(month==2 && g==28 && date>28 || date<=0)
+		{System.out.println("please enter valid date");fla=false;}
+		else if(month==2 && g==29 && date>29 || date<=0)
+		{System.out.println("please enter valid date");fla=false;}
+		else if(month>12 || month<=0){System.out.println("please enter valid month");fla=false;}
+		if(year<=0){System.out.println("please enter valid year");fla=false;}
+		if(fla==true){
+		int h=(g%7)+3;
+		int r=year-1;
+		int o=0;
+		int t=0;
+		o=r%100;
+		t=(o==0)?r:r-o;
+        System.out.println(t);
+        t=(t%400==0)?0:((t%400==300)?1:((t%400==200)?3:5));
+        h+=t;
+        o=(o/4)+o;
+        o=o%7;
+        h+=o;
+        while(h>=7){
+            h-=7;
+        }
+        System.out.println(t);
+        System.out.println(h);
+        System.out.println("February last  day is "+ar[h]);
+        int j=0;
+        String y="";
+        switch(month){
+            case 4:
+                 j=4;
+                if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+            case 6:
+                 j=6;
+                if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+            case 8:
+                 j=8;
+                if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+            case 10:
+                 j=10;
+                if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+            case 12:
+                 j=12;
+               if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+            case 9:
+                 j=5;
+                if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+            case 5:
+                j=9;
+                if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+            case 7:
+                 j=11;
+               if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+            case 11:
+                 j=7;
+                if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+            case 3:
+                 j=7;
+                if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+            case 2:
+                j=g;
+                y=ar[lazyfunction(j,date,h)];
+                break;
+            case 1:
+                j=(g==29)?4:3;
+                if(j>date)  y=ar[lazyfunction(j,date,h)];
+                else { j=worry(j,date);
+                y=ar[lazyfunction(j,date,h)];}
+                break;
+        }
+        System.out.println(y);
+		}
+        
+}
+
+}
+
